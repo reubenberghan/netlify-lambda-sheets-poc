@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 
+import { NETLIFY_FUNCTIONS_URI } from './constants'
+
 function useLambda() {
   const [requested, setRequested] = useState()
   const [isLoading, setIsLoading] = useState(false)
@@ -9,7 +11,7 @@ function useLambda() {
     if (requested) {
       setIsLoading(true)
 
-      fetch(`.netlify/functions/${requested}`)
+      fetch(`${NETLIFY_FUNCTIONS_URI}${requested}`)
         .then(res => res.json())
         .then(res => {
           setResponse(res)

@@ -1,12 +1,13 @@
 import React from 'react'
 
 import useLambda from './useLambda'
+import { CREATE_SHEET } from './constants'
 
 function CreateSheet() {
   const [{ isLoading, response, requested }, getLambda] = useLambda()
 
   function handleClick(e) {
-    getLambda('create-sheet')
+    getLambda(CREATE_SHEET)
   }
 
   return (
