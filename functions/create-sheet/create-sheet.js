@@ -15,6 +15,12 @@ exports.handler = async (event, context) => {
     // const res = await client.request({url});
     // console.log(res.data);
 
+    // const auth = new google.auth.GoogleAuth({
+    //   scopes: ['https://www.googleapis.com/auth/spreadsheets']
+    // })
+    // const authClient = await auth.getClient()
+    // const project = await auth.getProjectId()
+
     const subject = event.queryStringParameters.name || "World";
 
     return {

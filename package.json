@@ -1,5 +1,5 @@
 {
-  "name": "netlfiy-lambda-sheets-poc",
+  "name": "netlify-lambda-sheets-poc",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
