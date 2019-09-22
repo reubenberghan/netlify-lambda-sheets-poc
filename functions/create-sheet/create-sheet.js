@@ -2,19 +2,21 @@
 // const path = require('path')
 // const { google } = require('googleapis')
 
-// const keyfile = path.join(__dirname, '.config/credentials.json')
+// const keyfile = path.join(process.cwd(), '.config/credentials.json')
 // const keys = JSON.parse(fs.readFileSync(keyfile))
-// const scopes = ['https://www.googleapis.com/auth/spreadsheets']
-
-// const client = new google.auth.OAuth2(
-//   keys.client_id,
-//   keys.client_secret
-// )
 
 // Docs on event and context https://www.netlify.com/docs/functions/#the-handler-method
 exports.handler = async (event, context) => {
   try {
+    // const client = google.auth.fromJSON(keys)
+    // client.scopes = ['https://www.googleapis.com/auth/spreadsheets.readonly'] // 'https://www.googleapis.com/auth/spreadsheets.readonly' , 'https://www.googleapis.com/auth/cloud-platform'
+
+    // const url = `https://dns.googleapis.com/dns/v1/projects/${keys.project_id}`;
+    // const res = await client.request({url});
+    // console.log(res.data);
+
     const subject = event.queryStringParameters.name || "World";
+
     return {
       statusCode: 200,
       body: JSON.stringify({ message: `Hello ${subject}` })
