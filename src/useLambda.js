@@ -11,7 +11,7 @@ function useLambda() {
     if (requested) {
       setIsLoading(true)
 
-      fetch(`${NETLIFY_FUNCTIONS_URI}${requested}`)
+      fetch(`${NETLIFY_FUNCTIONS_URI}/${requested}`)
         .then(res => res.json())
         .then(res => {
           setResponse(res)
