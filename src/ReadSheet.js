@@ -1,21 +1,21 @@
 import React from 'react'
 
 import useLambda from './useLambda'
-import { CREATE_SHEET } from './constants'
+import { READ_SHEET } from './constants'
 
-function CreateSheet() {
+function ReadSheet() {
   const [{ isLoading, response, requested }, getLambda] = useLambda()
 
   function handleClick(e) {
-    getLambda(CREATE_SHEET)
+    getLambda(READ_SHEET)
   }
 
   return (
     <>
-      <button onClick={handleClick}>Create Sheet</button>
+      <button onClick={handleClick}>Read Sheet</button>
       {requested && (isLoading ? <p>loading...</p> : <pre>{JSON.stringify(response)}</pre>)}
     </>
   )
 }
 
-export default CreateSheet
+export default ReadSheet
