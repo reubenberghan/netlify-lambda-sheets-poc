@@ -32,9 +32,7 @@ function AddToSheet() {
           setSubmitted('')
           setValue('')
         })
-        .catch(err => {
-          console.log(err.errorMessage)
-        })
+        .catch(console.log)
     }
   }, [submitted])
 
