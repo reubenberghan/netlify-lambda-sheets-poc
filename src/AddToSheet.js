@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react'
 
-import { NETLIFY_FUNCTIONS_URI } from './constants'
+import { NETLIFY_FUNCTIONS_URI, WRITE_SHEET } from './constants'
 
 function AddToSheet() {
   const [value, setValue] = useState('')
-  const [addedValue, addValue] = useState()
+  const [submitted, setSubmitted] = useState()
 
   function handleChange(e) {
     setValue(e.target.value)
@@ -12,27 +12,32 @@ function AddToSheet() {
 
   function handleSubmit(e) {
     e.preventDefault()
-    addValue(value)
+    setSubmitted(value)
   }
 
   useEffect(() => {
-    if (addedValue) {
-      fetch(`${NETLIFY_FUNCTIONS_URI}/write-sheet`, {
+    if (submitted) {
+      fetch(`${NETLIFY_FUNCTIONS_URI}/${WRITE_SHEET}`, {
         method: 'POST',
-        body: JSON.stringify({ value: addedValue }),
+        body: JSON.stringify({ value: submitted }),
         headers: { 'Content-Type': 'application/json' },
-      }).catch(console.log)
+      })
+        .then(res => {
+          setSubmitted('')
+          setValue('')
+        })
+        .catch(console.log)
     }
-  }, [addedValue])
+  }, [submitted])
 
   return (
     <>
       <form onSubmit={handleSubmit}>
         <label>
           Add value to sheet:&nbsp;
-          <input type='text' onChange={handleChange} value={value} />
+          <input type='text' onChange={handleChange} value={value} disabled={Boolean(submitted)} />
         </label>
-        <input type='submit' value='Add to sheet' />
+        <input type='submit' value='Add to sheet' disabled={Boolean(submitted)} />
       </form>
     </>
   )
