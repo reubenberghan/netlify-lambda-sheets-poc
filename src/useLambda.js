@@ -24,7 +24,9 @@ function useLambda() {
           setResponse(res)
           setIsLoading(false)
         })
-        .catch(console.log)
+        .catch(err => {
+          console.log(err.errorMessage)
+        })
     }
   }, [requested])
 
