@@ -23,6 +23,12 @@ function AddToSheet() {
         headers: { 'Content-Type': 'application/json' },
       })
         .then(res => {
+          if (res.status !== 200) {
+            throw Error('Something went wrong!')
+          }
+          return res
+        })
+        .then(res => {
           setSubmitted('')
           setValue('')
         })
