@@ -4,6 +4,7 @@ import React from 'react'
 import './App.css'
 import ReadSheet from './ReadSheet'
 import AddToSheet from './AddToSheet'
+import Login from './Login'
 
 function App() {
   return (
@@ -12,6 +13,7 @@ function App() {
         <h1>Hello Netlify functions</h1>
       </header>
       <main>
+        <Login />
         <AddToSheet />
         <br />
         <ReadSheet />
