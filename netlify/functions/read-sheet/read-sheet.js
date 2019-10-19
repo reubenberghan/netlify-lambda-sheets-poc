@@ -1,4 +1,4 @@
-require('dotenv').config({ path: require('path').join(process.cwd(), '.env.production.local') })
+require('dotenv').config()
 
 const { google } = require('googleapis')
 
@@ -22,10 +22,10 @@ exports.handler = async (event, context) => {
 
     const res = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: 'A1:B1',
+      range: 'A1:A',
     })
 
-    console.log(res.data.values)
+    console.log(res.data.values.length)
 
     const subject = event.queryStringParameters.name || 'World'
 
