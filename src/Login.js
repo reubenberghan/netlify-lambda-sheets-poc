@@ -22,7 +22,7 @@ function Login() {
   useEffect(() => {
     if (submitted) {
       fetch(`${NETLIFY_FUNCTIONS_URI}/login`, {
-        headers: { Authorization: `Basic ${submitted.username}:${submitted.password}` },
+        headers: { Authorization: `Basic ${btoa(`${submitted.username}:${submitted.password}`)}` },
       })
         .then(res => {
           if (!res.ok) {
