@@ -4,6 +4,7 @@ import React from 'react'
 import './App.css'
 import ReadSheet from './ReadSheet'
 import AddToSheet from './AddToSheet'
+import AddResults from './AddResults'
 
 function App() {
   return (
@@ -15,6 +16,8 @@ function App() {
         <AddToSheet />
         <br />
         <ReadSheet />
+        <br />
+        <AddResults />
       </main>
     </div>
   )
