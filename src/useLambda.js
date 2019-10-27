@@ -13,7 +13,7 @@ function useLambda() {
 
       fetch(`${NETLIFY_FUNCTIONS_URI}/${requested}`)
         .then(res => {
-          if (res.status !== 200) {
+          if (!res.ok) {
             setIsLoading(false)
             throw Error('Something went wrong!')
           }

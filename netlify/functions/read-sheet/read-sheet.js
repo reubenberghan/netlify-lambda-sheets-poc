@@ -25,7 +25,7 @@ exports.handler = async (event, context) => {
       range: 'A1:A',
     })
 
-    console.log(res.data.values.length)
+    // console.log(res.data.values.length)
 
     const subject = event.queryStringParameters.name || 'World'
 
